@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+
+
+            function handleIt() {
+                let variable=document.getElementById("id1");
+                console.log(variable["value"]);
+
+            }
+
+
+        </script>
+    </head>
+
+    <body>
+        <form name="myform" action="javascript:handleIt()">
+            <input name="Submit"  type="submit" value="Update"/>
+            <input id="id1" name="Submit" value="Update"/>
+        </form>
+    </body>
+</html>

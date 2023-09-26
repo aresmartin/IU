@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi primera web</title>
+</head>
+<body>
+
+<form action="/formulario" method="POST">
+        
+        <label for="nombre">Nombre</label>
+        <input value="chanchito" type="text" id="nombre" name="nombre" placeholder="Nombre"/>
+        <br>
+
+        <label for="apellido">Apellido</label>
+        <input value="feliz" type="text" id="apellido" name="apellido" placeholder="Apellido"/>
+        <br>
+
+        <label for="comentario">Comentario</label>
+        <textarea cols="50" rows="10" id="comentario"
+                  placeholder="ingrese comentario"
+                  name="comentario">este es un valor por defecto</textarea>
+        <br>
+        <!-- Creacion de etique tipo submit mas personalizable
+             button:
+             a)type=button
+             b)type=reset
+             c)type=submit
+        -->
+        <button type="button">Tipo boton</button>
+        <button type="reset">Tipo reset</button>
+        <button type="submit">Tipo submit</button>
+
+    </form>
+
+</body>
+</html>
