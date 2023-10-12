@@ -5,11 +5,12 @@ def_test_MartinAresAlvarez =
         //id_programa
         Array('id_programa', 1, 'tamaño < 1' , false, 'El id del programa no puede tener menos de 1
             dígitos'),
-        Array('id_programa', 2, 'tamaño > 10', false, 'El id del programa no puede tener más de 6
+        Array('id_programa', 2, 'tamaño > 6', false, 'El id del programa no puede tener más de 6
             dígitos'),
-        Array('id_programa', 3, 'no númerico o un solo cero', false, 'Id del programa
+        Array('id_programa', 3, 'no númerico', false, 'Id del programa
             contiene caracteres no permitidos (solo numéricos)'),
         Array('id_programa', 4, 'dígitos entre el 1 y el 6', true, 'Exito'),
+
         //nombre_programa
         Array('nombre_programa', 5, 'tamaño < 6' , false, 'El nombre del programa no puede tener menos de 6
             caracteres'),
@@ -217,8 +218,8 @@ def_test_MartinAresAlvarez =
         //modo_aplicacion_programa
         Array('modo_aplicacion_programa', 98, 'valor != INDIVIDUAL o valor != COLECTIVO o valor != INDIVIDUAL Y COLECTIVO' , false, 'El modo aplicación de programa no puede ser
             distinto a INDIVIDUAL, COLECTIVO o INDIVIDUAL Y COLECTIVO'),
-        Array('modo_aplicacion_programa', 99, 'ausencia de algún acento' , false, 'El modo aplicación de programa tiene que
-            contener los acentos correspondientes'),
+        Array('modo_aplicacion_programa', 99, 'presencia de algún acento' , false, 'El modo aplicación de programa NO tiene que
+            contener acentos'),
         Array('modo_aplicacion_programa', 100, 'valor = individual o valor = colectivo o valor = individual y colectivo', false, 'El modo aplicación de programa tiene que
             estar en mayúsculas'),
         Array('modo_aplicacion_programa', 101, 'presencia de algún caracter en minúscula', false, 'Modo aplicación de programa no puede
@@ -236,7 +237,7 @@ def_test_MartinAresAlvarez =
             contiene caracteres no permitidos (solo alfabéticos, ñ no incluida)'),
         Array('imagen_programa', 107, 'presencia dígitos > 0', false, 'Imagen del programa
             contiene dígitos, no permitidos (solo alfabéticos, ñ no incluida)'),
-        Array('imagen_programa', 108, 'caracteres alfabéticos entre 7 y 60', true, 'Exito'),
-    )
+        Array('imagen_programa', 108, 'caracteres alfabéticos entre 7 y 60', true, 'Exito')
+    );
 
 
