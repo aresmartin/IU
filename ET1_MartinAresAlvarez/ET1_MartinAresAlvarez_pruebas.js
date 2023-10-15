@@ -1,3 +1,5 @@
+<script type="text/javascript">
+
 pruebasunitarias_MartinAresAlvarez =
     Array(
         //id_programa
@@ -240,7 +242,7 @@ pruebasunitarias_MartinAresAlvarez =
         Array(107, 'imagen_programa', 191, 'imagenProgram', true),
         Array(108, 'imagen_programa', 192, '123imagen', false),
         Array(108, 'imagen_programa', 193, 'imagenPrograma', true),
-        Array(109, 'imagen_programa', 194, 'imagenvalida', true),
+        Array(109, 'imagen_programa', 194, 'imagenvalida', true)
 
     )
-
+</script>
