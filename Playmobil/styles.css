@@ -1,0 +1,148 @@
+#menu_superior {
+    display: flex; /* Fila o columna. */
+    flex-direction: row; /* Elementos en fila. */
+    background-color: whitesmoke;
+    position: sticky; /* Quedarse quieto. */
+    top: 0; /* Dónde se queda quieto. */
+}
+
+#menu_navegacion {
+    border: 2px solid gray;
+    background-color: aquamarine;
+}
+
+#logo {
+    width: 500%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    padding-left: 50px;
+}
+
+#sesion {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#inicio {
+    color: black;
+    font-size: 25px ;
+}
+
+#menu_navegacion {
+    display: flex;   
+    justify-content: center;
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    position: fixed; /* Quedarse quieto. */
+    top: 20; /* Dónde se queda quieto. */
+    left: 20;
+    
+    
+    gap: 50px; 
+}
+
+
+.nav_list {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;  
+    list-style: none;
+    
+    
+    
+    gap: 30px;
+}
+
+#mundo {
+    background-image: url('./assets/iconoMundoMejor.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 30px;
+    
+}
+
+#Tematicas {
+    background-image: url('./assets/iconoTematicas.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 30px;
+    
+}
+
+#Nuevo {
+    background-image: url('./assets/cobete.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 30px;
+    
+}
+
+#PLUS {
+    background-image: url('./assets/estrella.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 30px;
+    
+}
+
+#Ofertas {
+    background-image: url('./assets/porcentaje.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 30px;
+    
+}
+
+.nav_icons {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;  
+    list-style: none;
+    
+    
+    
+    gap: 30px;
+}
+
+
+
+.slider{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider ul{
+    display: flex;
+    animation: cambio 20s infinite alternate linear;
+    width: 400%;
+}
+.slider li{
+    width: 100%;
+    list-style: none;
+}
+.slider img{
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes cambio{
+    0% {margin-left: 0;}
+    20% {margin-left: 0;}
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+    
+}
