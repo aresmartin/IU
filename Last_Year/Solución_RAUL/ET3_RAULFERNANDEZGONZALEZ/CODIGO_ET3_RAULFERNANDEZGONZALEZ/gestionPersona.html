@@ -1,0 +1,195 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- Llamadas a js,css...-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./js/validaciones_formato.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_comunes.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_persona.js"></script>
+  <script type="text/javascript" src="./locale/idioma.js"></script>
+  <script type="text/javascript" src="./js/md5.js"></script>
+  <script type="text/javascript" src="./locale/Lang_ES.js"></script>
+  <script type="text/javascript" src="./locale/Lang_EN.js"></script>
+  <script type="text/javascript" src="./locale/Lang_GA.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/estiloPersona.css" media="screen" />
+<!----------------------------------------------------------------------------->
+
+</head>
+<body onload='cargarIdioma(); devolverPersonasAjax(); checkLogin();'>
+
+<!-- Texto pagina principal -->
+<h1 class='t_headerGP'> </h1>
+
+
+<!----------------------------------------------------------------------------->
+
+
+
+<!-- Caja de selector de idiomas -->
+<!----------------------------------------------------------------------------->
+
+
+
+
+<!-- Formulario de persona -->
+
+<div id='id_cajaConfir' style='display:none'>
+
+    <label id='id_mensajeConfir' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormConfir' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaConfir')" > </img> </div>
+
+</div>
+
+<div id='id_cajaErrorModal' style='display:none'>
+
+    <label id='id_mensajeErrorModal' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormError' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaErrorModal')" > </img> </div>
+
+</div>
+
+<div id='id_CajaFormPersona' name='caja' label=caja_form_persona_anadir style='display: none'>
+
+  <div id='id_caja_mensaje' name='caja' style='display: none'>
+    <br>
+    <div id='id_textMensaje' style='color:red'> mensajeGenerico </div>
+  </div>
+
+  <form enctype= multipart/form-data id='id_formPersona' name='form_login' onsubmit='return comprobar_form_login()' method='post'>
+
+    <br>
+    <br>
+      <div class='errorBox' id='id_caja_mensaje_dni' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje_dni'> mensajeGenerico </div>
+      </div>
+      <div class=inputBox>
+      <input type="text" required="required" id="dni_persona" size="25" name="dni" onblur="comprobar_dni();" placeholder class='t_ph_dni' />
+      <label class="t_dni"> </label>
+      <i></i>
+      </div>
+
+      <div class='errorBox' id='id_caja_mensaje_nombre' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje_nombre'> mensajeGenerico </div>
+      </div>
+      <div class=inputBox>
+      <input type="text" required="required" id="nombre_persona" size="25" name="nombre_persona" onblur="comprobar_nombre();" placeholder class='t_ph_nombrePersona' />
+      <label class="t_nombre"> </label>
+      <i></i>
+      </div>
+
+      <div class='errorBox' id='id_caja_mensaje_apellido' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje_apellido'> mensajeGenerico </div>
+      </div>
+      <div class=inputBox>
+      <input type="text" required="required" id="apellido_persona" size="25" name="apellidos_persona" onblur="comprobar_apellido();" placeholder class='t_ph_apellidosPersona' />
+      <label class="t_apellidos"> </label>
+      <i></i>
+      </div>
+
+      <div class=inputBox>
+      <input type="text" required="required" id="fecha_nacimiento_persona" placeholder="pholder" size="25" name="fechaNacimiento_persona" />
+      <label class="t_fnacimiento"> </label>
+      <i></i>
+      </div>
+
+      <div class='errorBox' id='id_caja_mensaje_email' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje_email'> mensajeGenerico </div>
+      </div>
+      <div class=inputBox>
+      <input type="text" required="required" id="email_persona" placeholder="pholder" size="25" name="email_persona" onblur='comprobar_email();' placeholder class='t_ph_emailPersona' />
+      <label class="t_email"> </label>
+      <i></i>
+      </div>
+
+      <div class='errorBox' id='id_caja_mensaje_foto' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje_foto'> mensajeGenerico </div>
+      </div>
+      <div class=inputBox>
+      <input type="file" required="required" id="foto_persona" value="FOTO" size="25" name="foto_persona" />
+      <label class="t_foto"> </label>
+      <i></i>
+      </div>
+
+
+      <div class='errorBox' id='id_caja_mensaje_direccion' name='caja' style='display: none'>
+          <br>
+          <div id='id_textMensaje_direccion'> mensajeGenerico </div>
+        </div>
+        <div class=inputBox>
+      <input type="text" required="required" id="direccion_persona" size="25" name="direccion_persona" onblur='comprobar_dire();' placeholder class='t_ph_direccionPersona' />
+      <label class="t_direccion"> </label>
+      <i></i>
+      </div>
+
+
+      <div class='errorBox' id='id_caja_mensaje_telefono' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje_telefono'> mensajeGenerico </div>
+      </div>
+      <div class=inputBox>
+      <input type="text" required="required" id="telefono_persona" size="10" name="telefono_persona" onblur='comprobar_tlf();' placeholder class='t_ph_telefonoPersona' />
+      <label class="t_telefono"> </label>
+      <i></i>
+      </div>
+
+    <div id="id_CajabotonPersona">
+		<img id='id_submitPersona' label='' style='cursor: pointer' src='' height="40" width="40" onclick="comprobarFormatoFormularioPersonaYEnviar();" > </img>
+    <label style='cursor: pointer'id='id_cerrarFormADDPersona' class='t_cerrar' onclick='switchEstadoCaja("id_CajaFormPersona"); cerrarOtrasCajas("id_CajaFormPersona");'> </label>
+    </div>
+
+    </form>
+  </div>
+
+<!----------------------------------------------------------------------------->
+<div id=id_cajaTablaUsuarios name='caja_no_cerrar' style='display: block'>
+
+        <div id='cajaFuncionalidades'>
+          <img id='id_imagenAnadir' style='cursor: pointer' src='./images/anadir.png' height="40" width="40" onclick="cerrarOtrasCajas('id_CajaFormPersona'); switchEstadoCaja('id_CajaFormPersona'); crearformADDpersona(); setColorEstandarInputFormPersona();" > </img>
+          <img id='id_imagenBuscar' style='cursor: pointer' src='./images/buscar.png' height="40" width="40" onclick="cerrarOtrasCajas('id_CajaFormPersona'); switchEstadoCaja('id_CajaFormPersona'); crearformSEARCHpersona(); setColorEstandarInputFormPersona();" > </img>
+        </div>
+
+        <div id='cajaAtrasEIdioma'>
+          <img id='id_imagenIdioma' style='cursor: pointer' src='./images/idioma.png' height="40" width="40" onclick="switchEstadoCaja('id_cajaIdiomas');" > </img>
+          <img id='id_imagenAtras' style='cursor: pointer' src='./images/atras.png' height="40" width="40" onclick="lanzarMenu();" > </img>
+            <div id='id_cajaIdiomas' name='caja' style='display: none'>
+              <p style='cursor: pointer' onclick='cambiarIdioma("ES"); switchEstadoCaja("id_cajaIdiomas");' > ESPANOL </p>
+              <p style='cursor: pointer' onclick='cambiarIdioma("EN"); switchEstadoCaja("id_cajaIdiomas");' > ENGLISH </p>
+              <p style='cursor: pointer' onclick='cambiarIdioma("GA"); switchEstadoCaja("id_cajaIdiomas");' > GALEGO </p>
+            </div>
+        </div>
+
+  <table id="id_tablaPersona" border='1'>
+
+    <thead>
+      <th class="t_dni"> </th>
+      <th class="t_nombre"> </th>
+      <th class="t_apellidos"> </th>
+  		<th class="t_email"> </th>
+  		<th class="t_foto"> </th>
+      <th class="t_editar"> </th>
+      <th class="t_borrar"> </th>
+      <th class="t_detalles"> </th>
+      <th id='id_refrescar'> <img style="cursor: pointer" class="titulo_refrescar" onclick="devolverPersonasAjax(); mensajeOKCaja('t_tablaRefrescada')" src="./images/recargar.png" width="50" height="50"></td></th>
+    </thead>
+  	<tbody id='id_datosPersona'>
+  	</tbody>
+  </table>
+</div>
+
+
+
+<!----------------------------------------------------------------------------->
+
+<!-- Formulario para la clase persona -->
+
+
+
+</body>
+</html>

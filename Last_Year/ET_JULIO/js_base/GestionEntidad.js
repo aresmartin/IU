@@ -1,6 +1,6 @@
+class GestionEntidad{
 
-    
-function cargar_plantilla(){
+   cargar_plantilla(){
     document.addEventListener("DOMContentLoaded", function(){
         insertar_titulo();
         insertarIconosTestBack();
@@ -9,7 +9,7 @@ function cargar_plantilla(){
     });
 }   
 
-function insertar_titulo(){
+ insertar_titulo(){
     const contenedor = document.getElementById('contenido_titulo');
     if (contenedor) {
         const encabezado = contenedor.textContent;
@@ -23,7 +23,7 @@ function insertar_titulo(){
     }
 }
 
-function insertarIconosTestBack(){
+ insertarIconosTestBack(){
     const div_iconostestback = document.getElementById('iconos_test_back')
     if(div_iconostestback){
         div_iconostestback.innerHTML = `
@@ -43,7 +43,7 @@ function insertarIconosTestBack(){
 
 }
 
-function insertarIconosAddSearch(){
+ insertarIconosAddSearch(){
 
     const div_iconosaddsearch = document.getElementById('iconos_add_search')
     if(div_iconosaddsearch){
@@ -59,7 +59,7 @@ function insertarIconosAddSearch(){
 
 }
 
-function insertarTablaProvisional(){
+ insertarTablaProvisional(){
     const div_tablaProvisional = document.getElementById('tabla-provisional')
     if(div_tablaProvisional){
         div_tablaProvisional.innerHTML = `
@@ -124,7 +124,10 @@ function insertarTablaProvisional(){
     
 }
 
-cargar_plantilla()
+}
+    
+document.getElementById('prueba').action = 'javascript:GestionEntidad.cargar_plantilla();'
+
         
      
 

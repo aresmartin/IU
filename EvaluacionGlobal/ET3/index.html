@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./css/index.css"
+      media="screen"
+    />
+    <linkf
+      rel="stylesheet"
+      type="text/css"
+      href="./js_app/micss.css"
+      media="screen"
+    />
+
+    <!-- ficheros de idiomas -->
+    <script type="text/javascript" src="./locale/idioma.js"></script>
+    <script type="text/javascript" src="./js_app/Textos_ES.js"></script>
+    <script type="text/javascript" src="./js_app/Textos_EN.js"></script>
+
+    <script type="text/javascript" src="./js_core/ExternalAccess.js"></script>
+    <script type="text/javascript" src="./js_app/Tests_class.js"></script>
+    <script type="text/javascript" src="./js_core/DOM_class.js"></script>
+    <script type="text/javascript" src="./js_base/EntidadAbstracta.js"></script>
+    <script
+      type="text/javascript"
+      src="./js_app/Validaciones_Atomicas.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./js_app/analysis_preparation.js"
+    ></script>
+    <script type="text/javascript" src="./js_app/project.js"></script>
+    <script type="text/javascript" src="./js_app/characteristic.js"></script>
+
+    <script
+      type="text/javascript"
+      src="./js_app/tests_analysis_preparation.js"
+    ></script>
+    <script type="text/javascript" src="./js_app/tests_project.js"></script>
+    <script
+      type="text/javascript"
+      src="./js_app/tests_characteristic.js"
+    ></script>
+
+    <!-- este es el script que carga las librerias ajax que usamos para acceder al back -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="./index.js"></script>
+  </head>
+
+  <body onload="">
+    <header id="header_page" class="bordeado">
+      <span class="text_titulo_app"></span>
+      <img src="./iconos/Spain.png" onclick="setLang('ES');" alt="Español" />
+      <img
+        src="./iconos/United-Kingdom.png"
+        onclick="setLang('EN');"
+        alt="Inglés"
+      />
+      <img
+        id="botonTEST"
+        src="./iconos/TEST.png"
+        onclick="validar.test_run();"
+        alt="Ejecutar Tests"
+      />
+    </header>
+
+    <nav class="bordeado">
+      <span class="text_titulo_menu" onclick="menu_work();"
+        >Opciones de ménu</span
+      >
+    </nav>
+
+    <aside id="div-menu">
+      <ol>
+        <li class="opcionmenu">
+          <span class="text_project" onclick="validar = new project();"
+            >Proyecto</span
+          >
+        </li>
+        <li class="opcionmenu">
+          <span
+            class="text_analysis_prep"
+            onclick="validar = new analysis_preparation();"
+            >Preparación de Análisis</span
+          >
+        </li>
+        <li class="opcionmenu">
+          <span
+            class="text_characteristic"
+            onclick="validar = new characteristic();"
+            >Característica</span
+          >
+        </li>
+      </ol>
+    </aside>
+
+    <section id="workspace" class="bordeado">
+      <div id="title_page" class="bordeado">
+        <span id="text_title_page" class="">titulo de pagina de entidad</span>
+      </div>
+
+      <div id="id_tabla_datos">
+        <div id="addysearch">
+          <img
+            id="botonADD"
+            src="./iconos/ADD.png"
+            onclick="validar.createForm_ADD();"
+            alt="Añadir"
+          />
+          <img
+            id="botonSEARCH"
+            src="./iconos/SEARCH.png"
+            onclick="validar.createForm_SEARCH();"
+            alt="Buscar"
+          />
+
+          <select id="seleccioncolumnas" size="2" multiple></select>
+        </div>
+
+        <table id="tabladatosalumnos">
+          <thead id="titulostablacabecera"></thead>
+          <tbody id="muestradatostabla"></tbody>
+        </table>
+
+        <br />
+        <img
+          src="./iconos/BACK.png"
+          onclick="validar.cerrar_tabla();"
+          alt="Volver"
+        />
+      </div>
+    </section>
+
+    <div class="div_IU_form" id="div_IU_form">
+      <div class="contenidoForm" id="contenidoForm">
+        <div class="class_titulo_form">
+          <span id="class_contenido_titulo_form" class=""
+            >titulo para el formulario de este tamaño</span
+          >
+        </div>
+
+        <form
+          id="IU_form"
+          name="IU_form"
+          method="POST"
+          enctype="multipart/form-data"
+          class="formulario"
+        ></form>
+        <br />
+        <img
+          src="./iconos/BACK.png"
+          onclick="validar.cerrar_formulario();"
+          alt="Cerrar Formulario"
+        />
+      </div>
+    </div>
+
+    <div class="contenidoForm" id="div_IU_test">
+      <!-- contenido de tests aquí -->
+      <img
+        src="./iconos/BACK.png"
+        onclick="validar.cerrar_test();"
+        alt="Cerrar Tests"
+      />
+    </div>
+
+    <footer class="bordeado">
+      <span class="text_titulo_pie">Pie de página</span>
+    </footer>
+
+    <!-- Overlay para acompañar el modal -->
+    <div id="modal_action_overlay"></div>
+
+    <!-- Modal para mostrar los errores de accion -->
+    <div id="error_action_modal">
+      <span id="error_action_msg"></span>
+      <button onclick="validar.cerrarModalError()">X</button>
+    </div>
+
+    <script type="text/javascript">
+      document.getElementById("div-menu").style.display = "none";
+      document.getElementById("div_IU_form").style.display = "none";
+      document.getElementById("id_tabla_datos").style.display = "none";
+      document.getElementById("title_page").style.display = "none";
+      document.getElementById("botonTEST").style.display = "none";
+      document.getElementById("div_IU_test").style.display = "none";
+      document.getElementById("error_action_modal").style.display = "none";
+
+      function menu_work() {
+        if (document.getElementById("div-menu").style.display == "none") {
+          document.getElementById("div-menu").style.display = "block";
+        } else {
+          document.getElementById("div-menu").style.display = "none";
+        }
+      }
+
+      setLang("");
+    </script>
+  </body>
+</html>

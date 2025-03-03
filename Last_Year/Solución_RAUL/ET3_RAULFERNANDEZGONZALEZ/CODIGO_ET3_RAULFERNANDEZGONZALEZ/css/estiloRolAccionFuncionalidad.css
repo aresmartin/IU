@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+
+  }
+
+
+  body{
+    top:0;
+    margin: 40px;
+    justify-content: center;
+    align-items: center;
+    background: #23242a;
+    min-height: 70vh;
+    min-width:  75%;
+    overflow:scroll;
+
+  }
+
+  .t_headerGRAF {
+    color: #45f3ff;
+    text-align: center;
+    left: center;
+    font-weight: 500;
+    font-size: 40;
+    justify-content: center;
+
+}
+
+
+
+
+#id_cajaIdiomas{
+    color: #45f3ff;
+}
+
+#cajaFuncionalidades{
+
+  display: inline-block;
+  width: auto;
+
+}
+
+#cajaAtrasEIdioma{
+
+  position: relative;
+  float: right;
+}
+
+
+
+#id_cajaTablaRAF{
+  display: flex;
+  color: #45f3ff;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#id_tablaRAF thead{
+    color: #45f3ff;
+
+
+}
+
+#id_tablaRAF{
+  color: #127799;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 100%;
+}
+
+#id_CajaFormRAF{
+
+  border-radius: 10px;
+  width: 380px;
+  height: 500px;
+  background: #28292d;
+  z-index: 10;
+  padding: 50px 40px;
+
+}
+
+
+#id_caja_mensaje {
+
+  justify-content: center;
+  align-items: center;
+
+}
+#id_CajabotonRAF{
+
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  #id_CajabotonRAF label{
+
+  color: #45f3ff;
+  display: flex;
+
+
+  }
+
+
+.inputBox{
+
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+
+
+  }
+
+  .inputBox input{
+
+    position: relative;
+    width: 100%;
+    padding: 10px 10px 10px;
+    background: transparent;
+    border: none;
+    outline:none;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    z-index: 10;
+
+  }
+
+  .inputBox label{
+
+    position: absolute;
+    left: 0;
+    padding: 10px 10px 10px;
+    font-size: 1em;
+    color: #8f8f8f;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+
+  }
+
+  .inputBox input:valid ~ label,
+  .inputBox input:not(:placeholder-shown) ~ label,
+  .inputBox input:focus ~ label
+  {
+
+    color: #45f3ff;
+    transform: translateY(-34px);
+    font-size: 0.75em;
+
+  }
+
+  .inputBox i{
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #45f3ff;
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
+    z-index: 9;
+
+  }
+
+  .inputBox input:valid ~ i,
+  .inputBox input:not(:placeholder-shown) ~ i,
+  .inputBox input:focus ~ i
+  {
+
+    height: 44px;
+
+
+  }
+
+
+  .inputBox input[style*= "rgb(255, 0, 0)"] ~ i
+  {
+
+    border: 3px solid red;
+
+
+  }
+
+  .inputBox input[style*= "rgb(255, 0, 0)"] ~ label
+    {
+
+      color: red;
+
+
+    }
+
+  .inputBox input[style*= "rgb(0, 230, 0)"] ~ i
+  {
+
+    border: 3px solid green;
+    transition: border-color 0.5s ease-in-out;
+
+  }
+
+  .inputBox input[style*= "rgb(0, 230, 0)"] ~ label
+  {
+
+    color: green;
+
+
+  }
+
+
+  .inputBox input::placeholder {
+    color: transparent;
+  }
+
+  .inputBox input:focus::placeholder {
+    color: grey;
+  }
+
+  #id_CajaFormRAF[style="display: block;"] ~ *{
+
+    filter: blur(5px);
+    pointer-events: none;
+
+}
+
+#id_CajaFormRAF[style="display: block;"]{
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+#id_cajaConfir[style="display: block;"] ~ *{
+
+  filter: blur(5px);
+  pointer-events: none;
+
+
+}
+
+#id_cajaConfir[style="display: block;"]{
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+#id_cajaErrorModal[style="display: block;"] ~ *{
+
+  filter: blur(5px);
+  pointer-events: none;
+
+
+}
+
+#id_cajaErrorModal[style="display: block;"]{
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+#id_cajaConfir{
+
+    border-radius: 10px;
+    width: auto;
+    height: 115px;
+    background: #28292d;
+    z-index: 10;
+    padding: 50px 40px;
+
+}
+
+#id_cajaConfir div{
+
+     position:relative;
+     left:103%;
+     top:-400%;
+     color: 45f3ff;
+
+
+}
+
+#id_cajaErrorModal{
+
+    border-radius: 10px;
+    width: auto;
+    height: 115px;
+    background: #28292d;
+    z-index: 11;
+    padding: 50px 40px;
+
+}
+
+#id_cajaErrorModal div{
+
+     position:relative;
+     left:103%;
+     top:-400%;
+     color: 45f3ff;
+
+
+}
+
+
+.errorBox{
+
+ position:absolute;
+ left: 103%;
+ width: 370;
+ height: 95;
+ background:#28292d;
+ border-radius:10px;
+ padding-left:10px;
+ z-index: 11;
+
+}
