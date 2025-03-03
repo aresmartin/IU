@@ -1,0 +1,16 @@
+body{
+    background-color: whitesmoke;
+    justify-items: center;
+    
+    
+}
+
+.form-container{
+    background-color: aqua;
+    min-height: 300px;
+    min-width: 800px;
+    display: grid;
+    align-items: stretch;
+    
+}
+

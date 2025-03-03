@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <!-- Aquí puedes enlazar un archivo CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Regístrate</h1>
+    </header>
+    <main>
+        <div class="form-container">
+          <form>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" placeholder="Introduce tu nombre" required />
+  
+            <br />
+
+            <label for="lastname">Apellidos:</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Introduce tus apellidos" required />
+  
+            <br />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Introduce tu e-mail" required />
+  
+            <br />
+
+            <label for="phone">Telefono:</label>
+            <input type="number" id="phone" name="phone" pattern="[0-9]{9}" placeholder="Introduce tu telefono (opcional)" />
+  
+            <br />
+  
+            <label for="passwdord">Contraseña:</label>
+            <input type="password" id="passwdord" name="passwdord" placeholder="Crea tu contraseña" required />
+  
+            <br />
+  
+            <button type="submit">Crear Cuenta</button>
+          </form>
+        </div>
+      </main>
+      <footer>
+        <p>Si ya tienes una cuenta, <a href="login.html">Inicia sesión aquí</a></p>
+    <!-- Aquí puedes enlazar un archivo JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
