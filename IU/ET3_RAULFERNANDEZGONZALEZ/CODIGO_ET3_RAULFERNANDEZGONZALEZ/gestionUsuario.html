@@ -1,0 +1,149 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- Llamadas a js,css...-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./js/validaciones_formato.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_comunes.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_usuario.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_rol.js"></script>
+  <script type="text/javascript" src="./locale/idioma.js"></script>
+  <script type="text/javascript" src="./js/md5.js"></script>
+  <script type="text/javascript" src="./locale/Lang_ES.js"></script>
+  <script type="text/javascript" src="./locale/Lang_EN.js"></script>
+  <script type="text/javascript" src="./locale/Lang_GA.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/estiloUsuario.css" media="screen" />
+<!----------------------------------------------------------------------------->
+
+</head>
+<body onload='cargarIdioma(); devolverUsuariosAjax(); checkLogin();'>
+
+<!-- Texto pagina principal -->
+<h1 class='t_headerGU'> </h1>
+<!----------------------------------------------------------------------------->
+
+<!-- Caja de selector de idiomas -->
+<div id='id_cajaConfir' style='display:none'>
+
+    <label id='id_mensajeConfir' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormConfir' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaConfir')" > </img> </div>
+
+</div>
+
+<div id='id_cajaErrorModal' style='display:none'>
+
+    <label id='id_mensajeErrorModal' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormError' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaErrorModal')" > </img> </div>
+
+</div>
+<!----------------------------------------------------------------------------->
+
+<div id='id_cajaConfir' style='display:none'>
+
+    <label id='id_mensajeConfir' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormConfir' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaConfir')" > </img> </div>
+
+</div>
+
+<div id='id_cajaErrorModal' style='display:none'>
+
+    <label id='id_mensajeErrorModal' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormError' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaErrorModal')" > </img> </div>
+
+</div>
+
+
+<!-- Formulario de usuario -->
+<div id='id_CajaFormUsuario' name='caja' label=caja_form_usuario_anadir style='display: none'>
+
+  <div id='id_caja_mensaje' name='caja' style='display: none'>
+    <br>
+    <div id='id_textMensaje' style='color:red'> mensajeGenerico </div>
+  </div>
+
+	<form enctype= multipart/form-data id='id_formUsuario' name='form_login' onsubmit='return comprobar_form_login()' method='post'>
+
+
+    <div class='errorBox' id='id_caja_mensaje_dni_usuario' name='caja' style='display: none'>
+      <br>
+      <div id='id_textMensaje_dni_usuario'> mensajeGenerico </div>
+    </div>
+    <div class=inputBox>
+    <input type="text" required="required" id="dni_usuario" value='' size="25" name="dni" onblur="comprobar_dni_usuario();" placeholder class='t_ph_dni' />
+      <label class="t_dni"> </label>
+    <i></i>
+    </div>
+
+    <div class='errorBox' id='id_caja_mensaje_nombre_usuario' name='caja' style='display: none'>
+      <br>
+        <div id='id_textMensaje_usuario_nombre_usuario'> mensajeGenerico </div>
+      </div>
+      <div class=inputBox>
+      <input type="text" required="required" id="nombre_usuario" value='' size="18" name="usuario" onblur='comprobar_nombre_usuario();' placeholder class='t_ph_nUsuario' />
+      <label class="t_usuario"> </label>
+    <i><i>
+    </div>
+
+
+    <div class=inputBox>
+		<div id="caja_select_rol" ><label id='t_idrol' class="t_idrol"></label></div>
+    </div>
+
+    <div id="id_CajabotonUsuario">
+    <img id='id_submitUsuario' label='' style='cursor: pointer' src='' height="40" width="40" onclick="comprobarFormatoFormularioUsuarioYEnviar();" > </img>
+    <label style='cursor: pointer'id='id_cerrarFormADDUsuario' class='t_cerrar'onclick='switchEstadoCaja("id_CajaFormUsuario"); cerrarOtrasCajas("id_CajaFormUsuario");'> </label>
+    </div>
+
+    </form>
+ </div>
+
+<!----------------------------------------------------------------------------->
+<div id=id_cajaTablaUsuarios name='caja_no_cerrar' style='display: block'>
+  <div id='cajaFuncionalidades'>
+    <img id='id_imagenAnadir' style='cursor: pointer' src='./images/anadir.png' height="40" width="40" onclick="switchEstadoCaja('id_CajaFormUsuario'); cerrarOtrasCajas('id_CajaFormUsuario'); crearformADDusuario();" > </img>
+    <img id='id_imagenBuscar' style='cursor: pointer' src='./images/buscar.png' height="40" width="40" onclick="switchEstadoCaja('id_CajaFormUsuario'); cerrarOtrasCajas('id_CajaFormUsuario'); crearformSEARCHusuario();" > </img>
+  </div>
+
+
+
+  <div id='cajaAtrasEIdioma'>
+    <img id='id_imagenIdioma' style='cursor: pointer' src='./images/idioma.png' height="40" width="40" onclick="switchEstadoCaja('id_cajaIdiomas');" > </img>
+    <img id='id_imagenAtras' style='cursor: pointer' src='./images/atras.png' height="40" width="40" onclick="lanzarMenu();" > </img>
+      <div id='id_cajaIdiomas' name='caja' style='display: none'>
+        <p style='cursor: pointer' onclick='cambiarIdioma("ES"); switchEstadoCaja("id_cajaIdiomas");' > ESPANOL </p>
+        <p style='cursor: pointer' onclick='cambiarIdioma("EN"); switchEstadoCaja("id_cajaIdiomas");' > ENGLISH </p>
+        <p style='cursor: pointer' onclick='cambiarIdioma("GA"); switchEstadoCaja("id_cajaIdiomas");' > GALEGO </p>
+      </div>
+  </div>
+
+  <table id="id_tablaUsuario" border='1'>
+
+    <thead>
+      <th class="t_dni"> </th>
+      <th class="t_usuario"> </th>
+      <th class="t_idrol"> </th>
+      <th class="t_editar"> </th>
+      <th class="t_borrar"> </th>
+      <th class="t_detalles"> </th>
+      <th id='id_refrescar'> <img style="cursor: pointer" class="titulo_refrescar" onclick="devolverUsuariosAjax(); mensajeOKCaja('t_tablaRefrescada')" src="./images/recargar.png" width="50" height="50"></td></th>
+    </thead>
+  	<tbody id='id_datosUsuario'>
+  	</tbody>
+  </table>
+
+
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+
+<!-- Formulario para la clase usuario -->
+
+
+
+</body>
+</html>

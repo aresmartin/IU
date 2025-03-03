@@ -1,0 +1,135 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- Llamadas a js,css...-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./js/validaciones_formato.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_comunes.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_accion.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_accion.js"></script>
+  <script type="text/javascript" src="./locale/idioma.js"></script>
+  <script type="text/javascript" src="./js/md5.js"></script>
+  <script type="text/javascript" src="./locale/Lang_ES.js"></script>
+  <script type="text/javascript" src="./locale/Lang_EN.js"></script>
+  <script type="text/javascript" src="./locale/Lang_GA.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/estiloAccion.css" media="screen" />
+<!----------------------------------------------------------------------------->
+
+</head>
+<body onload='cargarIdioma(); devolverAccionesAjax(); checkLogin();'>
+
+
+<!-- Texto pagina principal -->
+<h1 class='t_headerGA'> </h1>
+<!----------------------------------------------------------------------------->
+
+
+<!-- Caja de selector de idiomas -->
+
+<!----------------------------------------------------------------------------->
+
+<div id='id_cajaConfir' style='display:none'>
+
+    <label id='id_mensajeConfir' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormConfir' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaConfir')" > </img> </div>
+
+</div>
+
+<div id='id_cajaErrorModal' style='display:none'>
+
+    <label id='id_mensajeErrorModal' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormError' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaErrorModal')" > </img> </div>
+
+</div>
+
+
+<!-- Formulario de accion -->
+<div id='id_CajaFormAccion' name='caja' label=caja_form_accion_anadir style='display: none'>
+
+  <div id='id_caja_mensaje' name='caja' style='display: none'>
+    <br>
+    <div id='id_textMensaje' style='color:red'> mensajeGenerico </div>
+  </div>
+
+	<form enctype= multipart/form-data id='id_formAccion' name='form_login' method='post'>
+
+
+    <div class='errorBox' id='id_caja_mensaje_nombre_accion' name='caja' style='display: none'>
+      <br>
+      <div id='id_textMensaje_nombre_accion'> mensajeGenerico </div>
+    </div>
+    <div class=inputBox>
+    <input type="text" required="required" id="nombre_accion" value='' size="40" name="nombre_accion" onblur="comprobar_nombre_accion(); " placeholder class='t_ph_nombresRaf' />
+     <label class="t_nombre"> </label>
+    <i></i>
+    </div>
+
+    <div class='errorBox' id='id_caja_mensaje_descrip_accion' name='caja' style='display: none'>
+      <br>
+      <div id='id_textMensaje_descrip_accion'> mensajeGenerico </div>
+    </div>
+    <div class=inputBox>
+    <input type="text" required="required" id="descrip_accion" value='' size="40" name="descrip_accion" onblur='comprobar_descripcion_accion();' placeholder class='t_ph_descipRaf' />
+      <label class="t_descripcion"> </label>
+    <i></i>
+    </div>
+
+
+    <div id="caja_id_accion" class=inputBox>
+    <input type="text" required="required" id="id_accion" value='' size="20" name="id_accion" placeholder class='t_ph_ids' />
+    <label id='id_label_idAccion' class="t_idaccion"> </label>
+		<i></i>
+    </div>
+
+
+    <div id="id_CajabotonAccion">
+    <img id='id_submitAccion' label='' style='cursor: pointer' src='' height="40" width="40" onclick="comprobarFormatoFormularioAccionYEnviar();" > </img>
+    <label style='cursor: pointer'id='id_cerrarFormADDAccion' class='t_cerrar' onclick='switchEstadoCaja("id_CajaFormAccion"); cerrarOtrasCajas("id_CajaFormAccion");'> </label>
+    </div>
+
+    </form>
+</div>
+
+<!----------------------------------------------------------------------------->
+<div id=id_cajaTablaAcciones name='caja_no_cerrar' style='display: block'>
+  <div id='cajaFuncionalidades'>
+    <img id='id_imagenAnadir' style='cursor: pointer' src='./images/anadir.png' height="40" width="40" onclick="switchEstadoCaja('id_CajaFormAccion'); cerrarOtrasCajas('id_CajaFormAccion'); crearformADDaccion(); setColorEstandarInputFormAccion();" > </img>
+    <img id='id_imagenBuscar' style='cursor: pointer' src='./images/buscar.png' height="40" width="40" onclick="switchEstadoCaja('id_CajaFormAccion'); cerrarOtrasCajas('id_CajaFormAccion'); crearformSEARCHaccion(); setColorEstandarInputFormAccion()" > </img>
+
+  </div>
+
+  <div id='cajaAtrasEIdioma'>
+    <img id='id_imagenIdioma' style='cursor: pointer' src='./images/idioma.png' height="40" width="40" onclick="switchEstadoCaja('id_cajaIdiomas');" > </img>
+    <img id='id_imagenAtras' style='cursor: pointer' src='./images/atras.png' height="40" width="40" onclick="lanzarMenu();" > </img>
+    <div id='id_cajaIdiomas' name='caja' style='display: none'>
+      <p style='cursor: pointer' onclick='cambiarIdioma("ES"); switchEstadoCaja("id_cajaIdiomas");' > ESPANOL </p>
+      <p style='cursor: pointer' onclick='cambiarIdioma("EN"); switchEstadoCaja("id_cajaIdiomas");' > ENGLISH </p>
+      <p style='cursor: pointer' onclick='cambiarIdioma("GA"); switchEstadoCaja("id_cajaIdiomas");' > GALEGO </p>
+    </div>
+  </div>
+  <table id="id_tablaAccion" border='1'>
+
+    <thead>
+      <th class="t_nombre"> </th>
+      <th class="t_descripcion"> </th>
+      <th class="t_editar"> </th>
+      <th class="t_borrar"> </th>
+      <th class="t_detalles"> </th>
+      <th id='id_refrescar'> <img style="cursor: pointer" class="titulo_refrescar" onclick="devolverAccionesAjax(); mensajeOKCaja('t_tablaRefrescada')" src="./images/recargar.png" width="50" height="50"></td></th>
+    </thead>
+  	<tbody id='id_datosAccion'>
+  	</tbody>
+  </table>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+
+<!-- Formulario para la clase accion -->
+
+
+
+</body>
+</html>

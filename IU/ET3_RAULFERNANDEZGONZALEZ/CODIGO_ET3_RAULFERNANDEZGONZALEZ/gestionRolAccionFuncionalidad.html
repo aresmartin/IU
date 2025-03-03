@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- Llamadas a js,css...-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./js/validaciones_formato.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_comunes.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_rolaccionfuncionalidad.js"></script>
+  <script type="text/javascript" src="./js/funcionalidades_rol.js"></script>
+  <script type="text/javascript" src="./locale/idioma.js"></script>
+  <script type="text/javascript" src="./js/md5.js"></script>
+  <script type="text/javascript" src="./locale/Lang_ES.js"></script>
+  <script type="text/javascript" src="./locale/Lang_EN.js"></script>
+  <script type="text/javascript" src="./locale/Lang_GA.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/estiloRolAccionFuncionalidad.css" media="screen" />
+<!----------------------------------------------------------------------------->
+
+</head>
+<body onload='cargarIdioma(); devolverRAFAjax(); checkLogin(); devolverRolesAjaxRAF();'>
+
+
+<!-- Texto pagina principal -->
+<h1 class='t_headerGRAF'> </h1>
+<!----------------------------------------------------------------------------->
+
+
+<!-- Caja de selector de idiomas -->
+
+<!----------------------------------------------------------------------------->
+<div id='id_cajaConfir' style='display:none'>
+
+    <label id='id_mensajeConfir' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormConfir' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaConfir')" > </img> </div>
+
+</div>
+
+<div id='id_cajaErrorModal' style='display:none'>
+
+    <label id='id_mensajeErrorModal' class='' > </label>
+
+    <div> <img id='id_imgCerrarFormError' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaErrorModal')" > </img> </div>
+
+</div>
+
+<!-- Formulario de raf -->
+<div id='id_CajaFormRAF' name='caja' label=caja_form_raf_anadir style='display: none'>
+  <div id=id_cajaImagenform name='caja' > </div>
+
+  <div id='id_caja_mensaje' name='caja' style='display: none'>
+    <br>
+    <div id='id_textMensaje' style='color:red'> mensajeGenerico </div>
+  </div>
+
+	<form enctype= multipart/form-data id='id_formRAF' name='form_login' method='post'>
+
+    <div class=inputBox>
+    <input type="text" required="required" id="id_rol_raf" value='' size="40" name="id_rol" onblur='' placeholder class='t_ph_ids' />
+    <label class="t_idrol"> </label>
+    <i></i>
+    </div>
+
+    <div class=inputBox>
+    <input type="text" required="required" id="id_accion_raf" value='' size="40" name="id_accion" onblur='' placeholder class='t_ph_ids' />
+		<label class="t_idaccion"> </label>
+		<i></i>
+    </div>
+
+    <div class=inputBox>
+    <input type="text" required="required" id="id_funcionalidad_raf" value='' size="40" name="id_funcionalidad" onblur='' placeholder class='t_ph_ids' />
+    <label class="t_idfuncionalidad"> </label>
+		<i></i>
+    </div>
+
+    <div id="id_CajabotonRAF">
+    <img id='id_submitRAF' label='' style='cursor: pointer' src='./images/buscar.png' height="40" width="40" onclick="enviarRAFByLabel(); switchEstadoCaja('id_CajaFormRAF')" > </img>
+    <label style='cursor: pointer'id='id_cerrarFormADDRAF' class='t_cerrar' onclick='switchEstadoCaja("id_CajaFormRAF"); cerrarOtrasCajas("id_CajaFormRAF");'> </label>
+    </div>
+
+    </form>
+</div>
+
+<!----------------------------------------------------------------------------->
+<div id=id_cajaTablaRAF name='caja_no_cerrar' style='display: block'>
+  <div id='cajaFuncionalidades'>
+    <img id='id_imagenBuscar' style='cursor: pointer' src='./images/buscar.png' height="40" width="40" onclick="switchEstadoCaja('id_CajaFormRAF'); cerrarOtrasCajas('id_CajaFormRAF'); crearformSEARCHraf(); setColorEstandarInputFormRAF()" > </img>
+  </div>
+
+  <div id='cajaAtrasEIdioma'>
+    <img id='id_imagenIdioma' style='cursor: pointer' src='./images/idioma.png' height="40" width="40" onclick="switchEstadoCaja('id_cajaIdiomas');" > </img>
+    <img id='id_imagenAtras' style='cursor: pointer' src='./images/atras.png' height="40" width="40" onclick="lanzarMenu();" > </img>
+    <div id='id_cajaIdiomas' name='caja' style='display: none'>
+      <p style='cursor: pointer' onclick='cambiarIdioma("ES"); switchEstadoCaja("id_cajaIdiomas");' > ESPANOL </p>
+      <p style='cursor: pointer' onclick='cambiarIdioma("EN"); switchEstadoCaja("id_cajaIdiomas");' > ENGLISH </p>
+      <p style='cursor: pointer' onclick='cambiarIdioma("GA"); switchEstadoCaja("id_cajaIdiomas");' > GALEGO </p>
+    </div>
+  </div>
+  <table id="id_tablaRAF" border='1'>
+
+    <thead id = 'id_datosRAFCabecera'>
+
+
+    </thead>
+  	<tbody id='id_datosRAF'>
+  	</tbody>
+  </table>
+
+
+</div>
+<!----------------------------------------------------------------------------->
+
+<!-- Formulario para la clase raf -->
+
+
+
+</body>
+</html>

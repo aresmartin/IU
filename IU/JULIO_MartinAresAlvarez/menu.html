@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menú</title>
+    <link rel="stylesheet" type="text/css" href="./css/IU.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <header>
+      <h1>Menú</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="gestion_personas.html">Gestión de Personas</a></li>
+        <li><a href="gestion_publicacion.html">Gestión de Publicaciones</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section class="zona-trabajo">
+        <h2><b>Resultados Tests</b></h2>
+        <div id="resultados_test" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Resultados de los tests se mostrarán aquí...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p></p>
+    </footer>
+    <script>
+      var modal = document.getElementById("resultados_test");
+      var span = document.getElementsByClassName("close")[0];
+
+      function mostrarResultados() {
+        modal.style.display = "block";
+      }
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

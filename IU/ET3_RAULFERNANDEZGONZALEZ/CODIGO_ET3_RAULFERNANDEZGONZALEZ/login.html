@@ -1,0 +1,149 @@
+<html>
+<head>
+
+<!-- Llamadas a los js -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="./js/validaciones_formato.js"></script>
+<script type="text/javascript" src="./js/funcionalidades_comunes.js"></script>
+<script type="text/javascript" src="./js/funcionalidades_login.js"></script>
+<script type="text/javascript" src="./locale/idioma.js"></script>
+<script type="text/javascript" src="./js/md5.js"></script>
+<script type="text/javascript" src="./locale/Lang_ES.js"></script>
+<script type="text/javascript" src="./locale/Lang_EN.js"></script>
+<script type="text/javascript" src="./locale/Lang_GA.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/estilosLogin.css" media="screen" />
+<!----------------------------------------------------------------------------->
+
+</head>
+<body onload='cargarIdioma()'>
+
+
+<div id='id_CajaLogin' name='caja' class=caja_form_login style='display: block'>
+
+
+      <div id='id_caja_mensaje' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje'> mensajeGenerico </div>
+      </div>
+
+      <div id='id_cajaConfir' style='display:none'>
+
+          <label id='id_mensajeConfir' class='' > </label>
+
+          <div> <img id='id_imgCerrarFormConfir' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaConfir')" > </img> </div>
+
+      </div>
+
+      <div id='id_cajaErrorModal' style='display:none'>
+
+          <label id='id_mensajeErrorModal' class='' > </label>
+
+          <div> <img id='id_imgCerrarFormError' label='' style='cursor: pointer' src='./images/fail.png' height="20" width="20" onclick="switchEstadoCaja('id_cajaErrorModal')" > </img> </div>
+
+      </div>
+
+  <div id=id_cajaFormLogin >
+    <h2 class='t_headerLogin'> </h2>
+  	<form enctype= multipart/form-data id='id_form_login' name='form_login' onsubmit='return comprobar_form_login()' method='post'>
+
+      <div class='errorBox' id='id_caja_mensaje_usuario' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje_usuario' class=''> </div>
+      </div>
+
+      <div class=inputBox>
+      <input type="text" required="required" id="id_usuario_login" value='' size="30" name="usuario" onblur="comprobar_nombre_usuarioLogin();" placeholder class='t_ph_nUsuario' />
+      <label class="t_usuario"> </label>
+      <i></i>
+      </div>
+
+      <div class='errorBox' id='id_caja_mensaje_contrasena' name='caja' style='display: none'>
+        <br>
+        <div id='id_textMensaje_contrasena'> mensajeGenerico </div>
+      </div>
+
+      <div class=inputBox>
+  		<input required='required' type="password" id="id_contrasena" value='' size="30" name="contrasena" onblur='comprobar_password();' placeholder class='t_ph_contrasena' />
+      <label class="t_contrasena"> </label>
+      <i><i>
+      </div>
+
+      <div id="id_CajabotonLogin">
+  		<label style='cursor: pointer'id='id_submitUsuarioLogin' class='t_submit' label='LOGIN' onclick='comprobarFormatoFormularioUsuarioLoginYEnviar()'> </label>
+      </div>
+
+        <div id="id_CajaImagenRegistro">
+      <img id='id_imagenRegistro' style='cursor: pointer' src='./images/registro.png' height="30" width="30" onclick='lanzarRegistro();' > </img>
+      </div>
+
+      <div id="cajaIdiomasSinIcono">
+
+        <label style='cursor: pointer' onclick='cambiarIdioma("ES"); switchEstadoCaja("id_cajaIdiomas");' > ESPANOL </label>
+        <label style='cursor: pointer' onclick='cambiarIdioma("EN"); switchEstadoCaja("id_cajaIdiomas");' > ENGLISH </label>
+        <label style='cursor: pointer' onclick='cambiarIdioma("GA"); switchEstadoCaja("id_cajaIdiomas");' > GALEGO </label>
+
+      </div>
+
+      </form>
+
+    </div>
+
+</div>
+
+<!--
+<div id='id_CajaFormRegistro' name='caja' label=caja_form_registro_anadir style='display: none'>
+  <div id=id_cajaImagenform name='caja' >
+<img id='id_imagenRegistro' style='cursor: pointer' src='./images/registro.png' height="30" width="30" onclick='switchEstadoCaja("id_CajaFormUsuario"); switchEstadoCaja("id_CajaFormRegistro")'
+  </div>
+  <form enctype= multipart/form-data id='id_formPersona_registro' name='form_registro' onsubmit='' method='post'>
+    <br>
+    <label class="t_dni"> </label>
+    <input type="text" id="dni_persona_registro" size="25" name="dni" onblur='comprobar_dni_registro();' placeholder class='t_ph_dni'/>
+    <br>
+
+    <label class="t_nombre"> </label>
+		<input type="text" id="nombre_persona_registro" value='' size="40" name="nombre_persona" onblur="comprobar_nombre_registro();" placeholder class='t_ph_nombrePersona' />
+    <br>
+
+		<label class="t_apellidos"> </label>
+		<input type="text" id="apellido_persona_registro" value='' size="40" name="apellidos_persona" onblur='comprobar_apellido_registro();' placeholder class='t_ph_apellidosPersona' />
+		<br>
+
+		<label class="t_fnacimiento"> </label>
+		<input type="date" id="fecha_nacimiento_persona_registro" value='' size="40" name="fechaNacimiento_persona" />
+		<br>
+
+		<label class="t_email"> </label>
+		<input type="text" id="email_persona_registro" value='' size="40" name="email_persona" onblur='comprobar_email_registro();' placeholder class='t_ph_emailPersona' />
+		<br>
+
+		<label class="t_foto"> </label>
+		<input type="file" id="foto_persona_registro" value='' name="foto_persona" value="FOTO" />
+		<br>
+
+		<label class="t_direccion"> </label>
+		<input type="text" id="direccion_persona_registro" value='' size="40" name="direccion_persona" onblur='comprobar_dire_registro();' placeholder class='t_ph_direccionPersona' />
+		<br>
+
+		<label class="t_telefono"> </label>
+		<input type="text" id="telefono_persona_registro" value='' size="10" name="telefono_persona" onblur='comprobar_tlf_registro();' placeholder class='t_ph_telefonoPersona' />
+    <br>
+    <label class="t_usuario"> </label>
+		<input type="text" id="id_usuario_registro" value='' size="30" name="usuario" onblur="comprobar_nombre_usuario_registro();" placeholder class='t_ph_nUsuario' />
+    <br>
+
+		<label class="t_contrasena"> </label>
+		<input type="password" id="id_password_registro" value='' size="30" name="contrasena" onblur='comprobar_password_registro();'  placeholder class='t_ph_contrasena' />
+		<br><br>
+
+		<label style='cursor: pointer'id='id_submitPersona' class='t_submit' label='REGISTRAR' onclick='comprobarFormatoFormularioRegistroYEnviar()'> </label>
+    <label style='cursor: pointer'id='id_cerrarFormADDPersona' class='t_cerrar' onclick='switchEstadoCaja("id_CajaFormUsuario"); switchEstadoCaja("id_CajaFormRegistro"); switchEstadoCaja("CajaheaderLogin"); switchEstadoCaja("CajaheaderRegistro")'> </label>
+
+    </form>
+</div>
+
+-->
+</body>
+</html>
